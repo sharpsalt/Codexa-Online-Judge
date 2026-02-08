@@ -1,0 +1,12 @@
+{
+  "name": "codexa-problem-service",
+  "version": "1.0.0",
+  "description": "This is admin service to manage problems of Codexa",
+  "license": "ISC",
+  "author": "Srijan Verma",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

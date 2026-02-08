@@ -19,5 +19,19 @@ When you run this you will switch to new branch 'Master'
 It is a good practice 
 
 
+Different Company have Different things 
+Master branch will be one where we will do active development 
+we are not having Active_Deployment branch because we have not QA Folks, or testers around
+
+Generally in Companies there are QA's
+whenever we have to deploy new feature we first pass it to QA 
+where QA test the festure, and then the feature get deployed to that  , but we don;t have that much that's why we skip it
+
+
+Different company have different version control system 
+Eg-Google have no git
+Google have piper, like it is a very different thing altogether 
+
+Piper is alternative of git
 
 

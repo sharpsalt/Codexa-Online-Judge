@@ -1,0 +1,23 @@
+We have going to be Ideally two branches at startign one is master branch and one is main branch
+How the seggregation of branches work?
+
+Whenever we will have a deployment ready service or code , we will only deploy the main branch
+Let's say all the active development, mergin or creation of feature, all those got mergd to master node,where we can have all the tests etc 
+when the master is in good situation then you push your code to main branch 
+
+
+Generally in companies there will be many many branches 
+Like main branch, master branch, test_deployment bracnh, active_dev branch
+
+So in our case we will make our Active_Deployment branch as master branch 
+
+Run the command
+
+git checkout -b master
+
+When you run this you will switch to new branch 'Master'
+It is a good practice 
+
+
+
+

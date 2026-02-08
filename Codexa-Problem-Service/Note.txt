@@ -35,3 +35,49 @@ Google have piper, like it is a very different thing altogether
 Piper is alternative of git
 
 
+
+if my request is in json format so it is necessary to write url encoded?
+//No but if you are using postman then while setting up postman body write raw json is pretty hectic while the url encoded is prtty easy 
+there can be situation where you want to take input from the frontend in the form of urlencoded strings then in that case too it will be useful too
+
+
+
+
+
+
+POSTMAN 
+_______
+Postman Open kro and go to Collectio tags and open new Collection 
+Collection is the group of request tht you want to have 
+so rename your new Collection to Codexa-Problem-service
+and after renaming click on that collection and then click on new request 
+in the new request give the localhost:3000/ping because we are having ping as an APi for ping checking phir uspe request bhejdo 
+to get the correct answer
+
+
+
+In POSTMAN we can actually define a variable 
+like instead of localhost:3000 we can set it as variable 
+Use case of variable?
+if at any point you are suing smehting very frequently like something called as base address then at that time we can set it as variable 
+like we don't need to write it again and again 
+our alias for the variable would be wrapped by double curly braces 
+
+suppose we have added new api or service so at that time we can simply use that variable 
+
+for example if the value of dev_server changes , like if you want to test it on production then there would be different url for production service 
+but if by any mean if we shifted rom production then in every place we hve to change the value of it 
+so instead of it we can simply use variable like it will be super easy for anyone 
+_____________________________________________________________________________________________________________________________________________________
+
+
+
+Let's do one thing , create a brand new feature branch 
+
+so i will create it 
+
+whenever there is a feature whcih you want to add, it is recommended that name the branch from feature , if you want to bug fix or hot fix then do that for themselved
+
+
+
+

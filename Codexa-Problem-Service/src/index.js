@@ -1,7 +1,16 @@
 //main server file 
 const express=require('express');
+const bodyParser = require('body-parser');
 const { PORT } = require('./config/server.config');
 const app=express();
+
+//i will allow 3 input incoming format via bodyparser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+//here we have given extended:true because to perfrom urlencoded middleware there are two algorithm 
+//if you hover on extended then it allows you to choose between parsing the URL encoded data with the querying library or qs library (qs is the new one) that's why we have got warning while setting it up for input
+app.use(bodyParser.text());
+
 
 //Generally it's a good practice to actually add a route for checking the ping on th service whther thats ervie is alive or not 
 

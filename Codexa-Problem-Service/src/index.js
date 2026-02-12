@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 //if you hover on extended then it allows you to choose between parsing the URL encoded data with the querying library or qs library (qs is the new one) that's why we have got warning while setting it up for input
 app.use(bodyParser.text());
 
-
+//if any request comes and route starts with /api, we map it to apiRouter
 app.use('/api',apiRouter);
 
 

@@ -76,8 +76,26 @@ Let's do one thing , create a brand new feature branch
 
 so i will create it 
 
+srijan-verma@Srijan-Dell-G15:~/Codes/Web Dev/Project/Codexa$ git checkout -b Feature_Setp_MVC_for_problem_spi
+
 whenever there is a feature whcih you want to add, it is recommended that name the branch from feature , if you want to bug fix or hot fix then do that for themselved
 
 
 
 
+Now we will startup by setting up layers
+controllers
+routes
+services
+utils
+validators
+config
+repositories
+
+
+
+//In our Admin Dashboard, either we can give end user or we can use somthing called as markdown
+Markdown is more of like markup language more of like html 
+with markdown you can add syntax  alignment,code snippet, or you want to add dropdown 
+bare minimum like adding images or videos bhi kr kste 
+//so we will be storing things for problem statement in markdown

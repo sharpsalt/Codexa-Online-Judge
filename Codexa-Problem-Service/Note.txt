@@ -99,3 +99,24 @@ Markdown is more of like markup language more of like html
 with markdown you can add syntax  alignment,code snippet, or you want to add dropdown 
 bare minimum like adding images or videos bhi kr kste 
 //so we will be storing things for problem statement in markdown
+
+
+All of these request we will be able to do because of middleware based architechture
+
+because of middleware like architechture, you can see like this apiRouter will also acts as middleware 
+what's the special thing about final middleware?
+
+qki final middleware, is the point from which later we are forwarding request to the service layers thats why we are calling it as controllers
+
+because the remaining middleware have different-different works
+
+
+
+
+
+
+
+
+
+
+

@@ -110,6 +110,13 @@ qki final middleware, is the point from which later we are forwarding request to
 
 because the remaining middleware have different-different works
 
+Finaly midddleware ko controllers isliye bolajayega because this is the point from which latr we will forward the request to service layer.
+that's why we call it controller because the remaining middleware have different objective like validation, to do routing , but this controller middleware has very specific objectiv 
+which is collect the request , send it to service layer and whatever we are getting send it back 
+
+Why we have to refer it as controllers?
+because expressjs is very un-opinionated framework. There is no direct concept of controllers altogether , but we have to architecht in some way that it will be done 
+
 
 
 

@@ -1,25 +1,36 @@
 function pingProblemController(req,res){
-    return res.json({message:'Ping Controller is working fine dude'})
+    return res.json({message:'Ping Controller is working fine dude'});
 }
 
 function addProblem(req,res){
     //This willl be our Create API
+    // return res.status(501).json({
+    //     message:"Not Implemented",
+    // });
 }
 
 function getProblem(req,res){
-
+    return res.status(501).json({
+        message:"Not Implemented",
+    });
 }
 
 function getProblems(req,res){
-
+    return res.status(501).json({
+        message:"Not Implemented",
+    });
 }
 
 function deleteProblem(req,res){
-
+    return res.status(501).json({
+        message:"Not Implemented",
+    });
 }
 
 function updateProblem(req,res){
-
+    return res.status(501).json({
+        message:"Not Implemented",
+    });
 }
 
 module.exports={
@@ -41,6 +52,48 @@ module.exports={
 
 
 
+//There is a very interesting documentation by microsoft, like usme humko ye bataya ki how to write in best way for REST Api(Representational State Transfer)
+//basically if we follow rest then your project structure will be much more consistent 
+//learn.microsoft/ best pratcice / architecture/ rest aise krke hoga 
+
+//REST kehta hai keep your routes resource oriented(ye wahi website se dekhe hai)
+/**
+ * you can name your routes like
+ *                            /api/v1/create-problem  (Not recommeneded)
+ * because this is action oriented 
+ * 
+ *                            /api/v1/problems   (recommended)
+ * because this is resource oriented
+ * 
+ * 
+ * Like we know ki GRPC kya hota , so grpc to aisa bolta bolta hai we prefer action-based routes
+ * so again it's a convention , it's just a set of recommendation
+ * 
+ * 
+ * 
+ * 
+ * res
+ * 
+ * res.status->returns the same response object with status property set
+ * res.json  ->returns the same response object which has status set but this json to be returned is also sent
+ * 
+ * 
+ * agar ye nhi krna to ek aur method hai like 
+ * npm i http-status-code
+ * 
+ * How to import it:
+ *                 const { StatusCodes } = require('http-status-code');
+ * 
+ * 
+ * It actually maps all of thenumerics status code to its proper name, technically it is very better to have...
+ * so pehle :
+ *          return res.status(501).json({"_______"});
+ * ab: 
+ *          return res.status(StatusCodes.NOT_IMPLEMENTED).json({});
+ * 
+ * but bro i have linux and usme bahut vulnerabilities dikharaha might be some package has been broken so i will choose simple one 
+ * when i will shift to windows then i will make assure of it.
+ */
 
 
 

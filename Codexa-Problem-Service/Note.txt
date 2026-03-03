@@ -110,8 +110,28 @@ qki final middleware, is the point from which later we are forwarding request to
 
 because the remaining middleware have different-different works
 
+Finaly midddleware ko controllers isliye bolajayega because this is the point from which latr we will forward the request to service layer.
+that's why we call it controller because the remaining middleware have different objective like validation, to do routing , but this controller middleware has very specific objectiv 
+which is collect the request , send it to service layer and whatever we are getting send it back 
+
+Why we have to refer it as controllers?
+because expressjs is very un-opinionated framework. There is no direct concept of controllers altogether , but we have to architecht in some way that it will be done 
 
 
+
+REST also recomment that 
+during routing it is recommended that we define the  type of methos 
+
+like get,post,delete,patch, etc
+status code to humlog ko use krna hi hai so... 
+
+Status Codes(Indicate what probably happened)
+____________
+1)Informational responses(100-199)
+2)Successful responses(200-299)
+3)Redirection message(300-399)
+4)Client error response(400-499)
+5)Server error resposne(500-599)
 
 
 

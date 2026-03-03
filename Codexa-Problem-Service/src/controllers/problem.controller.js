@@ -68,6 +68,31 @@ module.exports={
  * 
  * Like we know ki GRPC kya hota , so grpc to aisa bolta bolta hai we prefer action-based routes
  * so again it's a convention , it's just a set of recommendation
+ * 
+ * 
+ * 
+ * 
+ * res
+ * 
+ * res.status->returns the same response object with status property set
+ * res.json  ->returns the same response object which has status set but this json to be returned is also sent
+ * 
+ * 
+ * agar ye nhi krna to ek aur method hai like 
+ * npm i http-status-code
+ * 
+ * How to import it:
+ *                 const { StatusCodes } = require('http-status-code');
+ * 
+ * 
+ * It actually maps all of thenumerics status code to its proper name, technically it is very better to have...
+ * so pehle :
+ *          return res.status(501).json({"_______"});
+ * ab: 
+ *          return res.status(StatusCodes.NOT_IMPLEMENTED).json({});
+ * 
+ * but bro i have linux and usme bahut vulnerabilities dikharaha might be some package has been broken so i will choose simple one 
+ * when i will shift to windows then i will make assure of it.
  */
 
 

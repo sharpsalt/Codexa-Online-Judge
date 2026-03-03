@@ -119,6 +119,19 @@ because expressjs is very un-opinionated framework. There is no direct concept o
 
 
 
+REST also recomment that 
+during routing it is recommended that we define the  type of methos 
+
+like get,post,delete,patch, etc
+status code to humlog ko use krna hi hai so... 
+
+Status Codes(Indicate what probably happened)
+____________
+1)Informational responses(100-199)
+2)Successful responses(200-299)
+3)Redirection message(300-399)
+4)Client error response(400-499)
+5)Server error resposne(500-599)
 
 
 

@@ -4,22 +4,33 @@ function pingProblemController(req,res){
 
 function addProblem(req,res){
     //This willl be our Create API
+    // return res.status(501).json({
+    //     message:"Not Implemented",
+    // });
 }
 
 function getProblem(req,res){
-
+    return res.status(501).json({
+        message:"Not Implemented",
+    });
 }
 
 function getProblems(req,res){
-
+    return res.status(501).json({
+        message:"Not Implemented",
+    });
 }
 
 function deleteProblem(req,res){
-
+    return res.status(501).json({
+        message:"Not Implemented",
+    });
 }
 
 function updateProblem(req,res){
-
+    return res.status(501).json({
+        message:"Not Implemented",
+    });
 }
 
 module.exports={
@@ -41,6 +52,23 @@ module.exports={
 
 
 
+//There is a very interesting documentation by microsoft, like usme humko ye bataya ki how to write in best way for REST Api(Representational State Transfer)
+//basically if we follow rest then your project structure will be much more consistent 
+//learn.microsoft/ best pratcice / architecture/ rest aise krke hoga 
+
+//REST kehta hai keep your routes resource oriented(ye wahi website se dekhe hai)
+/**
+ * you can name your routes like
+ *                            /api/v1/create-problem  (Not recommeneded)
+ * because this is action oriented 
+ * 
+ *                            /api/v1/problems   (recommended)
+ * because this is resource oriented
+ * 
+ * 
+ * Like we know ki GRPC kya hota , so grpc to aisa bolta bolta hai we prefer action-based routes
+ * so again it's a convention , it's just a set of recommendation
+ */
 
 
 

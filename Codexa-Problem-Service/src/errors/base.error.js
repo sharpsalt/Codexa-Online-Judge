@@ -9,10 +9,10 @@ class BaseError extends Error{
          * basically whenever we create a branh new object then hum isme bahut saara property deskte 
          * 
          */
-        super(description);
-        this.name=name;
+        super(description); //generally this description is used for returing to client
+        this.name=name; //name of the error like whether it is bad request error, not implemented error, gateway timeout, server timeout, etc
         this.statusCode=statusCode;
-        this.details=details;
+        this.details=details; //to attach details of the error to the client side 
         //There is a property called as error.captureStackTrace (I took refernce from: stackoverflow)
         //what it does is:
         /**
@@ -48,6 +48,16 @@ module.exports={BaseError};
  * Basically we also need proper error handling  mechanism
  * 
  * 
+ * we want custom error classes because sometime we will be throwing some unimplemeted exception, sometimes you'll be thrpwing bad request or not found, 
+ * so for that we need custom error classes, because for every error code we want to handle it seperately 
+ * Generally you find people uses it...
+ * 
+ * 
+ * BaseError is kind of like an umbrella error class that you are goig=ng to create and you are extending it from nodejs property and it has 3 property name,message,stack
+ * when we say BaseError extends Error means ki we inherit all the property of Error class (Basic Inheritance)
+ * 
+ * we pass super in description
+ *
  */
 
 

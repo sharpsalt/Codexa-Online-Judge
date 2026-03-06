@@ -1,6 +1,6 @@
 //main server file 
 const express=require('express');
-const {BaseError}=require('./errors/BaseErrors')
+const {BaseError}=require('./errors/base.error')
 const bodyParser = require('body-parser');
 const { PORT } = require('./config/server.config');
 const app=express();
@@ -33,13 +33,18 @@ app.listen(PORT,()=>{
 
 
     //how to handle it simply do try catch so hum try catch krdenge
-    try{
-        throw new BaseError("Some Error",404,{errromessage:"Something"});
-    } catch(error){
-        console.log("Somehting went wrong",error);
-    } finally{
-        console.log("Executed Finally");
-    }
+    // try{
+    //     //1. Opened a db conncetion
+    //     //2. Queries on db, but a wrong wrong syntax query
+    //     //3. Exception will be thrown
+    //     throw new BaseError("Some Error",404,{errromessage:"Something"});
+    // } catch(error){
+    //     //log the error
+    //     console.log("Somehting went wrong",error);
+    // } finally{
+    //     //close the db connection
+    //     console.log("Executed Finally");
+    // }
 });
 
 //Exception is an unexpected event that occurs during porgam execution and disrupts the normal flow of instruction.

@@ -1,4 +1,4 @@
-const BaseError=require('../errors/base.error');
+const {BaseError}=require('../errors/base.error');
 const {StatusCodes}=require('http-status-codes')
 
 function errorHandler(err,req,res,next){

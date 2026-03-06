@@ -1,4 +1,4 @@
-const BaseError=require('./base.error');
+const {BaseError}=require('./base.error');
 const {StatusCodes}=require('http-status-codes')
 //since BaseError has itself a constructor and just require name 
 

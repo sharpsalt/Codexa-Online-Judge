@@ -19,7 +19,7 @@ class BaseError extends Error{
          * It creates a .stack property on the object which when accused returns a string representing the location in the code at which Error.captureStackTrace() was called
          * so you can call it on corresponding object and you'll get it 
          */
-        Error.captureStackTrace(this);
+        // Error.captureStackTrace(this);
         //ye rakhne se 
         /**
          * Like on the corresponding object e have .stack property 
@@ -63,6 +63,10 @@ module.exports={BaseError};
 
 
 
+/**
+ * Like saar file me alag alag error likhne ke baad you might be thinking ki how by just creating this classes everything gonna work out 
+ * so i will create errorHandler.js inside utils folder
+ */
 
 
 

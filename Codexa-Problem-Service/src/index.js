@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const { PORT } = require('./config/server.config');
 const app=express();
 const apiRouter=require('./routes');
+const errorHandler = require('./utils/errorHandler');
 
 //i will allow 3 input incoming format via bodyparser
 app.use(bodyParser.json());
@@ -23,6 +24,8 @@ app.get('/ping',(req,res)=>{
     return res.json({message:"Problem Serive is Alive"});
 });
 //if any point of time if you want to check if any service is alive or not then you can make check on ping service 
+
+app.use(errorHandler);
 
 app.listen(PORT,()=>{
     console.log(`Server started at ${PORT}`);

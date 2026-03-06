@@ -81,6 +81,7 @@ srijan-verma@Srijan-Dell-G15:~/Codes/Web Dev/Project/Codexa$ git checkout -b Fea
 whenever there is a feature whcih you want to add, it is recommended that name the branch from feature , if you want to bug fix or hot fix then do that for themselved
 
 
+_____________________________________________________________________________________________________________________________________________________
 
 
 Now we will startup by setting up layers
@@ -135,7 +136,29 @@ ____________
 
 
 
+_____________________________________________________________________________________________________________________________________________________
+Before we start implementing new things we should be able to handle errors more efficeintly.
+for any application , error handling is very important as it is not only going to tracing back the errors, but also to make sure that application is robust enough and you were good enough that you are able to commincate 
 
+
+so pehle to sike liye bhi branch banalenge like ye to important hota it is pratices in industry 
+
+simply do 
+          git checkout -b Feature_Adding_Error_Handling
+
+For different types of eeror we need different message structure like client pe alag hoga and sever pe alag ,so that one can understand whatever is going on, 
+Since there are already build solution par hum apna khud ka solution banayega 
+
+//ek package hai http-errors, like it has many things so we can built some custom solutions
+npm i http-errors
+
+
+This is one way... like we can use it as there are different different property 
+but what i think that we can alos build own custom error classes so humlog wo use nhi krenge 
+
+
+we try to prepare our own custom error classes that we actaully modify an dresturcture based on our need
+so create an errors folders->BaseError.js ->This is ging to be base class upon which other classes will extend it and get erro handling done 
 
 
 

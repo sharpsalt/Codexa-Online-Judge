@@ -1,5 +1,6 @@
 //main server file 
 const express=require('express');
+const {BaseError}=require('./errors/BaseErrors')
 const bodyParser = require('body-parser');
 const { PORT } = require('./config/server.config');
 const app=express();
@@ -25,7 +26,28 @@ app.get('/ping',(req,res)=>{
 
 app.listen(PORT,()=>{
     console.log(`Server started at ${PORT}`);
+    //the moment i create server i will also create a branch new error object 
+    //this error object will be our BaseError 
+    // throw new BaseError("Some Error",404,{errromessage:"Something"});//we want to signal our exception that's why we throw it...
+    //isko rakhenge and app on krenge to app crash krega because we are thworing an error and we don't know how to handle it '
+
+
+    //how to handle it simply do try catch so hum try catch krdenge
+    try{
+        throw new BaseError("Some Error",404,{errromessage:"Something"});
+    } catch(error){
+        console.log("Somehting went wrong",error);
+    } finally{
+        console.log("Executed Finally");
+    }
 });
+
+//Exception is an unexpected event that occurs during porgam execution and disrupts the normal flow of instruction.
+//exception is a run-time issue so we have to be prepared for vaious kinds of exception.
+//Exception Handling bahut important hota hai industry me like usme to sbkoi hi use krta hai 
+//like humlog api call wgaera bhi issi se krte even...
+
+
 
 
 

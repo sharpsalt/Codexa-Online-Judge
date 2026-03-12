@@ -16,7 +16,7 @@ function addProblem(req,res,next){
     }catch(error){
         next(error);
         //suppose i don't call next then what should happen
-        console.log(error);//if i send it then request stall kr jayega
+        // console.log(error);//if i send it then request stall kr jayega
         /**
          * Why the request will be stalled?
          * 
@@ -39,21 +39,30 @@ function getProblem(req,res,next){
 }
 
 function getProblems(req,res,next){
-    return res.status(501).json({
-        message:"Not Implemented",
-    });
+    try{
+        //nothing implemented
+        throw new NotImplemented("Get Problems");
+    }catch(error){
+        next(error);
+    }
 }
 
 function deleteProblem(req,res,next){
-    return res.status(501).json({
-        message:"Not Implemented",
-    });
+    try{
+        //nothing implemented
+        throw new NotImplemented("delete Problems");
+    }catch(error){
+        next(error);
+    }
 }
 
 function updateProblem(req,res,next){
-    return res.status(501).json({
-        message:"Not Implemented",
-    });
+    try{
+        //nothing implemented
+        throw new NotImplemented("Update Problems");
+    }catch(error){
+        next(error);
+    }
 }
 
 module.exports={

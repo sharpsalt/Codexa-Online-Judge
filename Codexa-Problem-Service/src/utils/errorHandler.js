@@ -2,6 +2,11 @@ const {BaseError}=require('../errors/base.error');
 const {StatusCodes}=require('http-status-codes')
 
 function errorHandler(err,req,res,next){
+    //The moment yiu have 4 parameters then specially it is an error handler , while if it has 3 parameter then it acts as normal middleware
+    /**
+     * agar 3 parameter rakheneg to bas yahi tak aayega and it is not even letting to touch the controller layer
+     */
+    // console.log(error);
     if(err instanceof BaseError){
         return res.status(err.statusCode).json({
             success:false,

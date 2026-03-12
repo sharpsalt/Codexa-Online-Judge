@@ -15,6 +15,17 @@ function addProblem(req,res,next){
         throw new NotImplemented('addProblem');
     }catch(error){
         next(error);
+        //suppose i don't call next then what should happen
+        console.log(error);//if i send it then request stall kr jayega
+        /**
+         * Why the request will be stalled?
+         * 
+         * Solution
+         *        You send a request , you came to this function, throw an exception and yuou just locked an error, like you have never returned any response
+         * so when we are calling next(error); instead of console.log(error), it is calling expressjs middleware
+         * and it does return an error response
+         * 
+         */
     }
 }
 

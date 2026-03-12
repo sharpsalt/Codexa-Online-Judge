@@ -2,6 +2,21 @@ const {BaseError}=require('../errors/base.error');
 const {StatusCodes}=require('http-status-codes')
 
 function errorHandler(err,req,res,next){
+    //The moment yiu have 4 parameters then specially it is an error handler , while if it has 3 parameter then it acts as normal middleware
+    /**
+     * agar 3 parameter rakheneg to bas yahi tak aayega and it is not even letting to touch the controller layer
+     * so ab TypeErro bhi aayega since we are returning res.status, because technically it is 3 parameter middlewarde and it is not finding ki kya krna hao so wahi se exception throw krrha hai 
+     * res.status se ki res.status me wo mila hi nahi that;s why we get TypeError
+     * 
+     * If the errorHandler will handle my code error , but what if this errorHandler function has itself error 
+     *   ? to us time kon handle krega ?
+     * that is handled by express js error handler...
+     * 
+     * 
+     * Basically i am tryng to convey ki agar isme bhi flaw hai to next middleware handle krega , so who is next middleware to wo express ka error handler middleware hoga 
+     * 
+     */
+    // console.log(error);
     if(err instanceof BaseError){
         return res.status(err.statusCode).json({
             success:false,

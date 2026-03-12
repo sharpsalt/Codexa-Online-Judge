@@ -188,4 +188,5 @@ like json ke tarah parse krlo , encoded tarah parse krna hai , ya text ke trh pa
 Tumhara pass sbse bada skill debuggging ka hona chahiye, and 2ra documentation padhna , and 3sra ki documentation likhna aana chahiye 
 like error wale me humlog super likhte , bhai logo ko ye smjh me hi nahi aayega
 
+Zepto ka pura backend Go me hai...
 

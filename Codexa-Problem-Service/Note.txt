@@ -162,4 +162,30 @@ so create an errors folders->BaseError.js ->This is ging to be base class upon w
 
 
 
+____________________________13 March,2026________________________________
+Like i have seen by myself in very open source codebase and particularly things at production level code, like you'll not see people writing only logic , and not handling the error
+Error ahndling is indeed a integral part of software engineering, so basically if you can't handle errors for you code then atleats call yourself as a college freshers not as a software engineering
+if you keep everything in controller, and not handling the error then call yoursef as a college freshers again
+Always keep in mind that you are "Srijan Verma", you are different, always be the one to know things in depth, because at any point of time every one is doing everything so to differ from other you ahve to be take care of everything little thing in you career, whether it is in field of industry or anything 
+
+I never want to be in situation ki jaha mujhe common logo itna knowledge ho...
+Like Hume buisness logic samajhna pdta hai wo khud m tough hai, iske upar se tech stacks bhi dekhna or shikhna, phir core CS bhi samajhna hai 
+
+Aadhe logo ko ye nhi pata ki two services ko communicate kaise krte ,like logo ko ye nhi ata ki web socket http pe likha gaya hai but still
+like log frontend easy lgta hai , but aisa nhi hai 
+
+log aise code chahte jo manageable ho , maintainable ho , scalable ho, testable ho 
+
+Like maine literally dekha hai apne college me aadhi se jyada janta ye 
+'''
+app.use(bodyParser.json());
+app,use(bodyParser.urlencoded({extented:true}));
+'''
+
+likhi hogi par unko iska mtlb hi nahi pata hoga, and they don;t even know ki iske alawaa bhi aur koi method hota hai body parser ka 
+like json ke tarah parse krlo , encoded tarah parse krna hai , ya text ke trh parse krna hai yesb matter krta hai
+
+Tumhara pass sbse bada skill debuggging ka hona chahiye, and 2ra documentation padhna , and 3sra ki documentation likhna aana chahiye 
+like error wale me humlog super likhte , bhai logo ko ye smjh me hi nahi aayega
+
 

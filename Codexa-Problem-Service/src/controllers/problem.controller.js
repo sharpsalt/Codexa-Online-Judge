@@ -29,25 +29,28 @@ function addProblem(req,res,next){
     }
 }
 
-function getProblem(req,res){
+function getProblem(req,res,next){
+    try{
+        //nothing implemented
+        throw new NotImplemented("Get Problem");
+    }catch(error){
+        next(error);
+    }
+}
+
+function getProblems(req,res,next){
     return res.status(501).json({
         message:"Not Implemented",
     });
 }
 
-function getProblems(req,res){
+function deleteProblem(req,res,next){
     return res.status(501).json({
         message:"Not Implemented",
     });
 }
 
-function deleteProblem(req,res){
-    return res.status(501).json({
-        message:"Not Implemented",
-    });
-}
-
-function updateProblem(req,res){
+function updateProblem(req,res,next){
     return res.status(501).json({
         message:"Not Implemented",
     });

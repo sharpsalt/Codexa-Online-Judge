@@ -12,3 +12,4 @@ module.exports=NotImplemented;
 //There are more to be implemented 
 // ReasonPhrases, StatusCodes, getReasonPhrase, getStatusCods
 //These 4 are Main heart of http-status-codes,like i got this from docs so once if you ever be free then do study it once
+//basically currently we have few Error classes in the service layer, we want to add support of more client side and server side errors

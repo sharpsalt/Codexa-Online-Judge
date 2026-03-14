@@ -188,4 +188,132 @@ like json ke tarah parse krlo , encoded tarah parse krna hai , ya text ke trh pa
 Tumhara pass sbse bada skill debuggging ka hona chahiye, and 2ra documentation padhna , and 3sra ki documentation likhna aana chahiye 
 like error wale me humlog super likhte , bhai logo ko ye smjh me hi nahi aayega
 
+Zepto ka pura backend Go me hai...
+
+
+
+____________________________________Start Adding Real buisness logic_____________________________________________________________________________
+The main business logic is to add probelms to the backend, it's more or less just like CRUD only , so inorder to add we ahve to stre it somewhere....
+
+If you acrefully itslef see then the structure of Problem doesn't have too much dependency 
+1. Problem name
+2. Unique Id to Problem
+3. We will be having description(string ke form me kind of markdown)
+4. Difficulty of Problem
+5. Later on we can add tags
+Interesting Part is managing Test cases 
+For this particular service humlog NoSQL Database use krnege why??
+for one problem you might have to strore multiple test cases, agar sql db use kiye to seperate table banana pdega nd assossiate bhi krna pdega 
+
+and Testcase prepared to one problem is not generic for other question , so hum MongoDB use krenge(simple hai isliye), mongodb also allows us to represent large strings 
+
+In code submission platform , like test cases is pretty static data, and testcases is a very large string altogether
+so what company does is that they use some kind of static data service, like in our case we will write test case in a txt file and upload it on Server, and will give link  
+
+One of the static storage service(Amazon S3), s3 will store it in form of buckets, why i am currently using s3. 
+Inorder to regsiter hume credit card lgta since merpe av ti nahi hai isliye s3 abhi use nhi krenge 
+and it's not mandatory at our scale.
+
+Halaki MongpDB me bhi store krskte hai like maximum size of a document in MongoDB is 16 MB. We can use cloudinary as well. 
+
+Basically we could have used cloudinary for our static data.
+
+In comeptitive programming 1 problem ke liye multiple test case rehte hai like on Codechef, codeforces
+but wahi on the other hand if we see LeetCode to usme rarely hi aisa koi problem hoga jisme mereko bahut saara testcases use hota hoga 
+
+Infact to be very honest , there are provisons in MongoDB in which we can store data in more than 16MB, there is something called as gridFS
+We don't need it as of now as it iwll be over-engineering hojayega , it will help us to store and retrieve the file in JSON document beyond 16MB 
+
+
+ 
+
+Where do we use SQL, or NoSQL?
+->Generally prefernce of SQL like database comes in handy like Postgres , when we have to deal with Transactions, billing part 
+whenever you want transactional data, at that time RDBMS have huge supermacy of nosql db 
+
+RDBMS is really scalable, like tum khud dekhlo , in most of the products which we using like search engine, payment, flipkart, etc , where some part of database heavily relies on one type of db 
+like harek jagah usecase ke hisaab se use hota hai like jaise usecase waise kaam , to waise hi database 
+
+if we have Transactional database, basically a database, which can be normalized and there can be lot of relationship whcih we can build so at that time sql dbs come into the picture 
+whenever you ahev non structured data , like alaga alag jagah pe uske hisaab se cheeze use hota hai 
+
+Until or unless you are working in a company, which really working with heavy number of requests basically at goood scale till that time for building project , the choice of db doesn't matter 
+
+Like we have used very newly launched db, but no one is using it then we can simply say that we are over-engineering things so it's an overkill basically 
+
+
+Google me spanner DB hai , ye wahi NewSQL hai but externally if we have to query then we have to write code in SQL format
+so basically sql dbs are easy to understand, learn, have pretty good docs.
+
+Since in our usecase we have no transaction data or any work related to transaction then at that time
+we have choosed MongoDB
+
+
+Later we can have probelm which have more specific property so mongdb is pretty good choice
+
+1 microservice can depend on multiple database and 
+multiple microservice can interact with mulitple databse etc 
+
+
+Like when you ahve Booking related data or transactional realted data to waha pe sql use hoga 
+In order to interact with database, we have DBDriver 
+
+
+DBDriver is kind of like software that helps you to connect with database
+basically iske madad se application database se interact and connect krta hai 
+
+
+1 way to actually interact your backend with database is via installing DB Driver that give you all the connection consfiguration for your TCP Server
+, so you have to set up connection, and once the connection is setted up , phir hum raw queries likhte based on data humara database chalta but generally raw queries likhna preferref nhi hota 
+and intead of directly connecting to the database and writing raw queries on top of that we wwill use ORM 
+
+MySQL->ke liye MySQL2 is a DB Driver....
+eloorent->ORM for PHP 
+Hibernate->ORM for Java & Spring
+Prisma->for interaction
+Sequelize->for JS,TS 
+
+
+Role of Driver-
+____________________________
+To make sure that your bacekdn application are able to setup connection with your database
+
+on top of that we have something called as ORM and ODM
+ORM->Object Relational Mapper
+ODM->Object Design Mapper
+
+Both have the same concept , whatever is the database layer, they do add abstraction on top of that database layer 
+such that you can able to interact with database layer just like you are interacting with class or object 
+so instead of raw queries, we do write object oriented code... so instead of sql qquery we do write ORM query
+
+
+
+In interview people are not expected ki tum pura backend likho but they generally do ask sql questions 
+and agar wo bhi nahi phcuha to hume raw query phuchta hai 
+when you actually work , to ye raw query bahut kam likhna padta but still likhna padta hai like in 
+legacy service me likhna padta hai 
+
+
+SInce in mongoDB kind of scenario we have ODM(ye bhi ORM ke tarah hi same hota )
+one of the most frequently used ODM is Mongoose
+
+we could have also used TypeORM , ye bhi mongodb me rehta hai 
+
+
+Which one is easy to write (raw or orm) queries?
+_________________________________________________
+ORM queries is pretty efficeint
+In ORM there is an abstraction layer of new objects ,first create new objects, those objects will convert those to corresponding queries
+but there are provisions where these ORMs does a lot of optimization in their end 
+sometime there is something called as db query caching,etc
+
+Generally ORM's are preferred over other because they don't add too much layers and they don;t hamper the optimizationa lot , but in some case it more optimized it.
+ORM's are usually better for writing buisness logic 
+
+
+
+
+
+
+
 

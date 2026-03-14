@@ -271,6 +271,7 @@ MySQL->ke liye MySQL2 is a DB Driver....
 eloorent->ORM for PHP 
 Hibernate->ORM for Java & Spring
 Prisma->for interaction
+Sequelize->for JS,TS 
 
 
 Role of Driver-

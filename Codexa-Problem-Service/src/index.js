@@ -63,7 +63,10 @@ app.listen(PORT,async ()=>{
 
 
 
-
+//March-22-2026: Connecting to DB
+/*
+We can actually use joins but wo sql me jyada preferred hota hai and ideally npthing like join exist in mongodb->ek bar aur bhi jagah padh lenge hum iske baare mein
+*/
 
 
 

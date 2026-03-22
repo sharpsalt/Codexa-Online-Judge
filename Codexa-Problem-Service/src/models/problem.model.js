@@ -20,8 +20,27 @@ const problemSchema=new Schema({
         enum:['easy','medium','hard'], 
         required: [true,'Difficulty cannot be empty'],
         default:'easy'
+    },
+    testCases:[
+        { 
+            input:{
+                type:String,
+                required:true
+            },
+            output:{
+                type:String,
+                required:true
+            }
+        }
+    ],
+    editorial:{
+        type:String
     }
 });
+
+const Problem=mongoose.model('Problem',problemSchema);
+
+module.exports=Problem;
 /*
 We can actually do validation as well like whenever your were defining a schema
 whatever property you have assign a object and define the corresponding set of validation and then do rest
@@ -31,6 +50,12 @@ For storing images we will use markdown,else w e can use coudinary as well or we
 
 
 Tag bhi lagaskte hai ismein 
+
+
+Mongoose Model is an object using which i can query for this particular problem collection
+so if i have to do anything around problems then i will use Problem Model object
+You can execute your ODM,ORM based on it
+
 */
 
 

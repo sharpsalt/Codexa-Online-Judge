@@ -6,6 +6,7 @@ const { PORT } = require('./config/server.config');
 const app=express();
 const apiRouter=require('./routes');
 const errorHandler = require('./utils/errorHandler');
+const connectToDB = require('./config/db.config');
 
 //i will allow 3 input incoming format via bodyparser
 app.use(bodyParser.json());
@@ -30,7 +31,7 @@ app.get('/ping',(req,res)=>{
 
 app.use(errorHandler);
 
-app.listen(PORT,()=>{
+app.listen(PORT,async ()=>{
     console.log(`Server started at ${PORT}`);
     //the moment i create server i will also create a branch new error object 
     //this error object will be our BaseError 
@@ -51,6 +52,8 @@ app.listen(PORT,()=>{
     //     //close the db connection
     //     console.log("Executed Finally");
     // }
+    await connectToDB();//basically jo bhi function me agar mereko await use krna hai to async use krna hi padta hai 
+    console.log("Successfully connected to DB");
 });
 
 //Exception is an unexpected event that occurs during porgam execution and disrupts the normal flow of instruction.
@@ -60,7 +63,10 @@ app.listen(PORT,()=>{
 
 
 
-
+//March-22-2026: Connecting to DB
+/*
+We can actually use joins but wo sql me jyada preferred hota hai and ideally npthing like join exist in mongodb->ek bar aur bhi jagah padh lenge hum iske baare mein
+*/
 
 
 

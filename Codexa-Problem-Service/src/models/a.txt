@@ -1,0 +1,1 @@
+Inside model we will keep our logical view of how our DB should look like 

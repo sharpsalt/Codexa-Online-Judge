@@ -310,6 +310,28 @@ sometime there is something called as db query caching,etc
 Generally ORM's are preferred over other because they don't add too much layers and they don;t hamper the optimizationa lot , but in some case it more optimized it.
 ORM's are usually better for writing buisness logic 
 
+will setup a new branch
+git checkout -b Feature_setup_repository_for_problems
+
+
+mongoose use krnege (documentation se krrhe hum)
+Mongoose internally have driver which automatically connects to mongodb 
+we just have to pass mongodb url 
+
+
+
+
+
+Agar cloud host kro and if it is scaling then choose region as Asia-Pacific 
+like during early yrs, gpay pehle bht slow slow tha 
+Gpay was not an indian poducts , it is a US Product and a lot of db,etc were into US so basically we used to do 
+cross-continent calls due to whcih we have latency issue in earlier days and due to whcih our payment crashes as well
+
+Let's say you borrow 2 machines from AWS, like one from Mumbai, and one from US Virginia , so lag dekhoge usme
+due to cross continent call.
+
+It is advisable that based on demography choose, where should the database should rely. in-case your demography s spread across world then you need distributedinstances across world 
+
 
 
 

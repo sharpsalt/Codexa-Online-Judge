@@ -1,1 +1,6 @@
 Inside model we will keep our logical view of how our DB should look like 
+
+Your queries that actually make change to datbase will lie inside repository 
+
+
+

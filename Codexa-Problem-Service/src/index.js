@@ -8,6 +8,8 @@ const apiRouter=require('./routes');
 const errorHandler = require('./utils/errorHandler');
 const connectToDB = require('./config/db.config');
 
+const Problem=require('./models/problem.model');//use this in order to hang off our all model query
+
 //i will allow 3 input incoming format via bodyparser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -54,6 +56,7 @@ app.listen(PORT,async ()=>{
     // }
     await connectToDB();//basically jo bhi function me agar mereko await use krna hai to async use krna hi padta hai 
     console.log("Successfully connected to DB");
+
 });
 
 //Exception is an unexpected event that occurs during porgam execution and disrupts the normal flow of instruction.

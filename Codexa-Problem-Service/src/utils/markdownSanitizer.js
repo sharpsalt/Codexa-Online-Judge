@@ -1,5 +1,5 @@
 const marked=require("marked");
-const sanitize=require("sanitize");
+const sanitize=require("sanitize-html");
 const TurndownService = require("turndown");
 
 function sanitizeMarkdown(markdownContent){
@@ -7,13 +7,15 @@ function sanitizeMarkdown(markdownContent){
     const turndownService=new TurndownService();//and this turndownservice will have many funcs
     //1. Convert markdown to html 
     const convertToHTML=marked.parse(markdownContent);
-
+    console.log("converted here: \n",convertToHTML);
     //2. Sanitize the HTML 
     const sanitizedHTML=sanitize(convertToHTML,
         {
-            allowedTags:sanitizedHTML.defaults.allowedTags
+            allowedTags:sanitize.defaults.allowedTags
         }
     );
+
+    console.log("sanitized html as: \n",sanitizedHTML);
 
     // return sanitizedHTML;
     /*
@@ -21,9 +23,10 @@ function sanitizeMarkdown(markdownContent){
     and simply pass the sanitized HTMl to get sanitized markdown
     */
 
+    //3. Convert the HTML back to markdown 
     const sanitizedMarkDown=turndownService.turndown(sanitizedHTML);
-
-    return sanitizeMarkdown;
+    console.log("Sanitized Markdown: \n", sanitizeMarkdown);
+    return sanitizedMarkDown;
 }
 
 module.exports=sanitizeMarkdown;
@@ -37,15 +40,3 @@ so while editing the problem the  person needs to know the HTML, and also wriitn
 yes this turndown package is also very useful 
 
 */
-
-
-
-
-
-
-
-
-
-
-
-

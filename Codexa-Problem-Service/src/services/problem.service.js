@@ -1,3 +1,5 @@
+const sanitizeMarkdown = require("../utils/markdownSanitizer");
+
 class ProblemService{
     /*
     ProblemService class is going to have a problemRepository which is going to be passed as constructor 
@@ -29,6 +31,19 @@ class ProblemService{
         //validation on data, should definately exist on backend as well as frontend,
         //there is a package called as marked
         //like marked parser, it is used inorder to mark the parser
+        
+
+        try{
+            //1. Sanitize the markdown for description
+        problemData.description=sanitizeMarkdown(problemData.description);
+
+        const problem=this.problemRepository.createProblem(problemData);
+
+        return problem;
+        }catch(error){
+            console.log(error);
+            throw error;
+        }
     }
 }
 

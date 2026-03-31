@@ -1,31 +1,49 @@
 const { StatusCodes } = require('http-status-codes');
 const NotImplemented = require('../errors/notimplemented.error');
+const {problemService}=require('../services');
+const {ProblemRepository}=require('../repositories');
+
+
+const problemService=new ProblemService(new ProblemRepository());
 
 function pingProblemController(req,res){
     return res.json({message:'Ping Controller is working fine dude'});
 }
 
-function addProblem(req,res,next){
-    //This willl be our Create API
-    // return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-    //     message:"Not Implemented",
-    // });
+// function addProblem(req,res,next){
+//     //This willl be our Create API
+//     // return res.status(StatusCodes.NOT_IMPLEMENTED).json({
+//     //     message:"Not Implemented",
+//     // });
+//     try{
+//         //nothing implemented
+//         throw new NotImplemented('addProblem');
+//     }catch(error){
+//         next(error);
+//         //suppose i don't call next then what should happen
+//         // console.log(error);//if i send it then request stall kr jayega
+//         /**
+//          * Why the request will be stalled?
+//          * 
+//          * Solution
+//          *        You send a request , you came to this function, throw an exception and yuou just locked an error, like you have never returned any response
+//          * so when we are calling next(error); instead of console.log(error), it is calling expressjs middleware
+//          * and it does return an error response
+//          * 
+//          */
+//     }
+// }
+//so basically we have to make it async function now 
+async function addProblem(req,res,next){
     try{
-        //nothing implemented
-        throw new NotImplemented('addProblem');
-    }catch(error){
-        next(error);
-        //suppose i don't call next then what should happen
-        // console.log(error);//if i send it then request stall kr jayega
-        /**
-         * Why the request will be stalled?
-         * 
-         * Solution
-         *        You send a request , you came to this function, throw an exception and yuou just locked an error, like you have never returned any response
-         * so when we are calling next(error); instead of console.log(error), it is calling expressjs middleware
-         * and it does return an error response
-         * 
-         */
+        // console.log("incoming req....");
+        const newproblem=await problemService.createrProblem(req.body);
+        return res.status(StatusCodes.CREATED).json({
+            success:true,
+            message:"Successfyully created a new Problem",
+            error:{},
+            data:newproblem 
+        })
     }
 }
 

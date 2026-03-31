@@ -22,6 +22,7 @@ const problemSchema=new Schema({
         default:'easy'
     },
     testCases:[
+        //ye aise krne se mera tast cases is not a mandatory field ban jayega 
         { 
             input:{
                 type:String,

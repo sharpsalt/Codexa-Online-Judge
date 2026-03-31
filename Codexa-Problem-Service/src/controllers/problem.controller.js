@@ -43,7 +43,10 @@ async function addProblem(req,res,next){
             message:"Successfyully created a new Problem",
             error:{},
             data:newproblem 
-        })
+        });
+    }catch(error){
+        console.log(error);
+        throw error; 
     }
 }
 

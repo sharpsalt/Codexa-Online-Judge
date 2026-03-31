@@ -7,13 +7,15 @@ function sanitizeMarkdown(markdownContent){
     const turndownService=new TurndownService();//and this turndownservice will have many funcs
     //1. Convert markdown to html 
     const convertToHTML=marked.parse(markdownContent);
-
+    console.log("converted here: \n",convertToHTML);
     //2. Sanitize the HTML 
     const sanitizedHTML=sanitize(convertToHTML,
         {
             allowedTags:sanitize.defaults.allowedTags
         }
     );
+
+    console.log("sanitized html as: \n",sanitizedHTML);
 
     // return sanitizedHTML;
     /*
@@ -23,7 +25,7 @@ function sanitizeMarkdown(markdownContent){
 
     //3. Convert the HTML back to markdown 
     const sanitizedMarkDown=turndownService.turndown(sanitizedHTML);
-
+    console.log("Sanitized Markdown: \n", sanitizeMarkdown);
     return sanitizedMarkDown;
 }
 

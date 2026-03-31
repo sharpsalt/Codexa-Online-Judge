@@ -1,7 +1,10 @@
 const marked=require("marked");
-const sanitize=require("sanitize")
+const sanitize=require("sanitize");
+const TurndownService = require("turndown");
 
 function sanitizeMarkdown(markdownContent){
+
+    const turndownService=new TurndownService();//and this turndownservice will have many funcs
     //1. Convert markdown to html 
     const convertToHTML=marked.parse(markdownContent);
 
@@ -12,7 +15,15 @@ function sanitizeMarkdown(markdownContent){
         }
     );
 
-    return sanitizedHTML;
+    // return sanitizedHTML;
+    /*
+    As per the doc first of all we have to creat a branch new object
+    and simply pass the sanitized HTMl to get sanitized markdown
+    */
+
+    const sanitizedMarkDown=turndownService.turndown(sanitizedHTML);
+
+    return sanitizeMarkdown;
 }
 
 module.exports=sanitizeMarkdown;

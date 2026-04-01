@@ -4,10 +4,11 @@ class ProblemRepository{
     async createProblem(problemData){
         try{
             const problem=await Problem.create({
-                title:problemData.titl,
+                title:problemData.title,
                 description:problemData.description,
-                testcases:(problemData.testcases)?problemData.testcases:[]
-            })
+                testCases:(problemData.testCases)?problemData.testCases:[]
+            });
+            return problem;
         }catch(error){
             //here for the timing we are doing it m baad me isko handle krlenge 
             console.error(error);

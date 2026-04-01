@@ -25,7 +25,7 @@ function sanitizeMarkdown(markdownContent){
 
     //3. Convert the HTML back to markdown 
     const sanitizedMarkDown=turndownService.turndown(sanitizedHTML);
-    console.log("Sanitized Markdown: \n", sanitizeMarkdown);
+    console.log("Sanitized Markdown: \n", sanitizedMarkDown);
     return sanitizedMarkDown;
 }
 

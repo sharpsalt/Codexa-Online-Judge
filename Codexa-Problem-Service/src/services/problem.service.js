@@ -37,7 +37,7 @@ class ProblemService{
             //1. Sanitize the markdown for description
         problemData.description=sanitizeMarkdown(problemData.description);
         console.log("Problem data: ",problemData);
-        const problem=this.problemRepository.createProblem(problemData);
+        const problem=await this.problemRepository.createProblem(problemData);
         console.log("Problem Created: ",problem);
         return problem;
         }catch(error){

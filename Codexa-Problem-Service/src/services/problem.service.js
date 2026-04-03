@@ -45,6 +45,16 @@ class ProblemService{
             throw error;
         }
     }
+
+    async getAllProblems(){
+        //by the way i have automatically handling it from reporsitory 
+        try{
+            const problems=await this.problemRepository.getAllProblem();
+            return problems;
+        }catch(error){
+            throw error;
+        }
+    }
 }
 
 module.exports=ProblemService;

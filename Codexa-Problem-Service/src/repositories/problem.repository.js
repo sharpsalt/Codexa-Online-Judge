@@ -1,5 +1,7 @@
+const NotFoundError = require('../errors/notfound.error');
 const {Problem}=require('../models');
 const { problemService } = require('../services');
+
 
 class ProblemRepository{
     async createProblem(problemData){
@@ -23,6 +25,18 @@ class ProblemRepository{
             return problem;
         }catch(error){
             console.error(error);
+            throw error;
+        }
+    }
+
+    async getproblem(){
+        try{
+            const problem=await Problem.findById(id);//ye to simple mongodb ka hi code hai
+            if(!problem){
+                throw new NotFoundError("Problem",id);
+            }
+        }catch(error){
+            console.log(error);
             throw error;
         }
     }

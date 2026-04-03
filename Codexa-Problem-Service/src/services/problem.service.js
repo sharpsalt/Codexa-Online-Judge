@@ -55,6 +55,11 @@ class ProblemService{
             throw error;
         }
     }
+
+    async getProblem(problemId){
+        const problems=await this.problemRepository.getAllProblem(problemId);
+        return problems;
+    }
 }
 
 module.exports=ProblemService;

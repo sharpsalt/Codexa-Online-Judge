@@ -1,6 +1,7 @@
 const { StatusCodes } = require('http-status-codes');
 const NotImplemented = require('../errors/notimplemented.error');
 const {problemService}=require('../services');
+const ProblemService = require('../services/problem.service');
 
 function pingProblemController(req,res){
     return res.json({message:'Ping Controller is working fine dude'});
@@ -45,20 +46,33 @@ async function addProblem(req,res,next){
         throw error; 
     }
 }
-
-function getProblem(req,res,next){
+ 
+async function getProblem(req,res,next){
     try{
         //nothing implemented
-        throw new NotImplemented("Get Problem");
+        const problem=await problemService.getproblem(req.param.id);
+        return res.status(StatusCodes.OK).json({
+            success:true,
+            error:{},
+            message:"Succesfully fetched aproblem",
+            data:newproblem
+        })
     }catch(error){
         next(error);
     }
 }
 
-function getProblems(req,res,next){
+async function getProblems(req,res,next){
     try{
         //nothing implemented
-        throw new NotImplemented("Get Problems");
+        // throw new NotImplemented("Get Problems");
+        const response=await ProblemService.getAllProblems();
+        return res.status(StatusCodes.OK).json({
+            success:true,
+            message:"Successfully dteched all the problems",
+            error:{},
+            data:newproblem
+        })
     }catch(error){
         next(error);
     }

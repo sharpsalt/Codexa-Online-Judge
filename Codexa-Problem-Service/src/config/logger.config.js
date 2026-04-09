@@ -1,4 +1,7 @@
 const winston=require('winston');
+const { LOG_DB_URL } = require('./server.config');
+const { collection } = require('../models/problem.model');
+require('winston-mongodb') //as it is written in documentation of winston
 const allowedTransports=[];
 
 allowedTransports.push(new winston.transports.Console({
@@ -13,6 +16,26 @@ allowedTransports.push(new winston.transports.Console({
 }));
 //Inside this console we also have to configure, if we won't configure then it is just a default...
 
+allowedTransports.push(new winston.transports.MongoDB)({
+    level:'error',
+    db:LOG_DB_URL,//this will help us to connect
+    collection:'logs',
+    // format:winston.format.combine(
+
+    // )
+});
+/*
+Now we need winston-mongodb package 
+npm i wisnton-mongodb
+now i will configure it , like tum usme dekho 
+
+and then here inside this mongodb function you'll pass an object where you have configuration to connect to mongodb
+since storing in db for logs is an expensive things and i don't want my all logs to go in dbs
+if you want any specific type of log to go in db then uske liye level decide krna pdega to 
+for anykind of transport if i define the level thn uske hisaab se hi hoga mera usmein
+ and then there is a db property which contain the mongdb connection url,so it is in .ENV
+
+*/
 
 const logger=winston.createLogger({
     level:'info',

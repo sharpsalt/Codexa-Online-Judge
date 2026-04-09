@@ -1,6 +1,10 @@
 const winston=require('winston');
+const { LOG_DB_URL } = require('./server.config');
+const { collection } = require('../models/problem.model');
+require('winston-mongodb') //as it is written in documentation of winston
 const allowedTransports=[];
 
+//the below transport configuration enables logging on the console
 allowedTransports.push(new winston.transports.Console({
     format:winston.format.combine(
         winston.format.colorize(),
@@ -13,6 +17,35 @@ allowedTransports.push(new winston.transports.Console({
 }));
 //Inside this console we also have to configure, if we won't configure then it is just a default...
 
+//The below transport configuration enables logging in database
+allowedTransports.push(new winston.transports.MongoDB)({
+    level:'error',
+    db:LOG_DB_URL,//this will help us to connect
+    collection:'logs',
+    // format:winston.format.combine(
+
+    // )
+    /*
+    There is some meta property, cap size, and decolorize, and many more like tum documentation se baaki dekhlena if you want to explore more
+    */
+});
+/*
+Now we need winston-mongodb package 
+npm i wisnton-mongodb
+now i will configure it , like tum usme dekho 
+
+and then here inside this mongodb function you'll pass an object where you have configuration to connect to mongodb
+since storing in db for logs is an expensive things and i don't want my all logs to go in dbs
+if you want any specific type of log to go in db then uske liye level decide krna pdega to 
+for anykind of transport if i define the level thn uske hisaab se hi hoga mera usmein
+ and then there is a db property which contain the mongdb connection url,so it is in .ENV
+
+*/
+
+//The belo transport configuration enables logging in 
+allowedTransports.push(new winston.transports.File)({
+    filename: `${__dirname}/logs.app.log`
+})
 
 const logger=winston.createLogger({
     level:'info',

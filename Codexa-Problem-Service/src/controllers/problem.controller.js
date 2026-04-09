@@ -101,13 +101,22 @@ function updateProblem(req,res,next){
     }
 }
 
+function testError(req,res,next){
+    try{
+        throw new Error("This is a test error to check logger!");
+    }catch(error){
+        next(error);
+    }
+}
+
 module.exports={
     addProblem,
     getProblem,
     getProblems,
     deleteProblem,
     updateProblem,
-    pingProblemController
+    pingProblemController,
+    testError
 }
 //since you might be thinking that i will not be directly importing from my probelm.controller.js file , why?
 //inside routes we have v1 

@@ -1,2 +1,11 @@
 Codexa-Problem-Service/node_modules
 Codexa-Problem-Service/.env
+Codexa-Problem-Service/POSTMAN_GUIDE.md
+Codexa-Problem-Service/DEBUGGING_GUIDE.md
+Codexa-Problem-Service/COMPLETE_SETUP_SUMMARY.md
+Codexa-Problem-Service/Codexa-Problem-Service.postman_collection.json
+Codexa-Problem-Service/API_TESTING_GUIDE.md
+Codexa-Problem-Service/FIXES_SUMMARY.md
+Codexa-Evaluator-Service/node_modules
+Codexa-Evaluator-Service/dist
+Codexa-Evaluator-Service/.env

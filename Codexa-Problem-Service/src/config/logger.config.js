@@ -18,7 +18,7 @@ allowedTransports.push(new winston.transports.Console({
 //Inside this console we also have to configure, if we won't configure then it is just a default...
 
 //The below transport configuration enables logging in database
-allowedTransports.push(new winston.transports.MongoDB)({
+allowedTransports.push(new winston.transports.MongoDB({
     level:'error',
     db:LOG_DB_URL,//this will help us to connect
     collection:'logs',
@@ -28,7 +28,7 @@ allowedTransports.push(new winston.transports.MongoDB)({
     /*
     There is some meta property, cap size, and decolorize, and many more like tum documentation se baaki dekhlena if you want to explore more
     */
-});
+}));
 /*
 Now we need winston-mongodb package 
 npm i wisnton-mongodb
@@ -43,9 +43,9 @@ for anykind of transport if i define the level thn uske hisaab se hi hoga mera u
 */
 
 //The belo transport configuration enables logging in 
-allowedTransports.push(new winston.transports.File)({
-    filename: `app.log`
-})
+allowedTransports.push(new winston.transports.File({
+    filename: 'app.log'
+}))
 
 const logger=winston.createLogger({
     level:'info',
@@ -55,7 +55,11 @@ const logger=winston.createLogger({
         winston.format.timestamp({
             format:'YYYY-MM-DD HH:mm:ss'
         }),
-        winston.format.printf((info)=>`${info.timestamp} [${info.level.toUpperCase()}]: ${info.message}: ${info.stack}`),//this will actually tell what to print
+        winston.format.printf((info)=>{
+            // Only add stack trace if it exists (for errors)
+            const stack = info.stack ? `: ${info.stack}` : '';
+            return `${info.timestamp} [${info.level.toUpperCase()}]: ${info.message}${stack}`;
+        }),//this will actually tell what to print
         //since every log has kind of like level so the log can beinformation log,error log,etc
         //error log is something which is going to be our main priority
 

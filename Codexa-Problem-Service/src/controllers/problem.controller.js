@@ -43,19 +43,18 @@ async function addProblem(req,res,next){
         });
     }catch(error){
         console.log(error);
-        throw error; 
+        next(error); // Pass to error handler middleware
     }
 }
  
 async function getProblem(req,res,next){
     try{
-        //nothing implemented
-        const problem=await problemService.getproblem(req.param.id);
+        const problem=await problemService.getProblem(req.params.id);
         return res.status(StatusCodes.OK).json({
             success:true,
             error:{},
-            message:"Succesfully fetched aproblem",
-            data:newproblem
+            message:"Successfully fetched a problem",
+            data:problem
         })
     }catch(error){
         next(error);
@@ -66,12 +65,12 @@ async function getProblems(req,res,next){
     try{
         //nothing implemented
         // throw new NotImplemented("Get Problems");
-        const response=await ProblemService.getAllProblems();
+        const response=await problemService.getAllProblems();
         return res.status(StatusCodes.OK).json({
             success:true,
-            message:"Successfully dteched all the problems",
+            message:"Successfully fetched all problems",
             error:{},
-            data:newproblem
+            data:response
         })
     }catch(error){
         next(error);
@@ -80,12 +79,12 @@ async function getProblems(req,res,next){
 
 async function deleteProblem(req,res,next){
     try{
-        const deleteProblem=await problemService.deleteProblem(req.param.id);
+        const deletedProblem=await problemService.deleteProblem(req.params.id);
         return res.status(StatusCodes.OK).json({
             success:true,
             message:"Successfully deleted the problem",
             error:{},
-            data:deleteProblem
+            data:deletedProblem
         });
     }catch(error){
         next(error);

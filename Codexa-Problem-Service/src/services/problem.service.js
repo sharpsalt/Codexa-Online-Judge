@@ -1,4 +1,7 @@
 const sanitizeMarkdown = require("../utils/markdownSanitizer");
+const BadRequest = require("../errors/badrequest.error");
+const NotFound = require("../errors/notfound.error");
+const logger = require("../config/logger.config");
 
 class ProblemService{
     /*
@@ -34,31 +37,81 @@ class ProblemService{
         
 
         try{
-            //1. Sanitize the markdown for description
-        problemData.description=sanitizeMarkdown(problemData.description);
-        console.log("Problem data: ",problemData);
-        const problem=await this.problemRepository.createProblem(problemData);
-        console.log("Problem Created: ",problem);
-        return problem;
+            if(!problemData.title || problemData.title.trim()===''){
+                logger.error('BadRequest: title is required');
+                throw new BadRequest('title is required');
+            }
+            if(!problemData.description || problemData.description.trim() === ''){
+                logger.error('BadRequest: description is required');
+                throw new BadRequest('description is required');
+            }
+            if(!problemData.difficulty){
+                logger.error('BadRequest: difficulty is required');
+                throw new BadRequest('difficulty is required');
+            }
+            //2. Sanitize the markdown for description
+            problemData.description = sanitizeMarkdown(problemData.description);
+            logger.info(`Creating new problem: ${problemData.title}`);
+            const problem=await this.problemRepository.createProblem(problemData);
+            logger.info(`Problem created successfully with ID: ${problem._id}`);
+            return problem;
         }catch(error){
-            console.log(error);
+            logger.error(`Error creating problem: ${error.message}`);
             throw error;
         }
     }
 
     async getAllProblems(){
-        //by the way i have automatically handling it from reporsitory 
         try{
-            const problems=await this.problemRepository.getAllProblem();
+            logger.info('Fetching all problems');
+            const problems=await this.problemRepository.getAllProblems();
+            logger.info(`Retrieved ${problems.length} problems`);
             return problems;
         }catch(error){
+            logger.error(`Error fetching all problems: ${error.message}`);
             throw error;
         }
     }
 
     async getProblem(problemId){
-        const problems=await this.problemRepository.getAllProblem(problemId);
-        return problems;
+        try{
+            if(!problemId){
+                logger.error('BadRequest: problemId is required');
+                throw new BadRequest('problemId is required');
+            }
+            logger.info(`Fetching problem with ID: ${problemId}`);
+            const problem = await this.problemRepository.getproblem(problemId);
+            if(!problem){
+                logger.error(`NotFound: Problem with ID ${problemId} not found`);
+                throw new NotFound(`Problem with ID ${problemId} not found`);
+            }
+            logger.info(`Problem found: ${problemId}`);
+            return problem;
+        }catch(error){
+            logger.error(`Error fetching problem: ${error.message}`);
+            throw error;
+        }
+    }
+
+    async deleteProblem(problemId){
+        try{
+            if(!problemId){
+                logger.error('BadRequest: problemId is required');
+                throw new BadRequest('problemId is required');
+            }
+            logger.info(`Deleting problem with ID: ${problemId}`);
+            const problem=await this.problemRepository.getproblem(problemId);
+            if(!problem){
+                logger.error(`NotFound: Problem with ID ${problemId} not found`);
+                throw new NotFound(`Problem with ID ${problemId} not found`);
+            }
+            const deletedProblem=await this.problemRepository.deleteProblem(problemId);
+            logger.info(`Problem deleted successfully: ${problemId}`);
+            return deletedProblem;
+        }catch(error){
+            logger.error(`Error deleting problem: ${error.message}`);
+            throw error;
+        }
     }
 }
 

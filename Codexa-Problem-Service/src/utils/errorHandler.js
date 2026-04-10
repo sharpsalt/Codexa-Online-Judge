@@ -1,5 +1,6 @@
 const {BaseError}=require('../errors/base.error');
 const {StatusCodes}=require('http-status-codes')
+const logger = require('../config/logger.config');
 
 function errorHandler(err,req,res,next){
     //The moment yiu have 4 parameters then specially it is an error handler , while if it has 3 parameter then it acts as normal middleware
@@ -18,6 +19,7 @@ function errorHandler(err,req,res,next){
      */
     // console.log(error);
     if(err instanceof BaseError){
+        logger.error(`${err.name}: ${err.message}`);
         return res.status(err.statusCode).json({
             success:false,
             message:err.message,
@@ -26,10 +28,13 @@ function errorHandler(err,req,res,next){
         });
     }
 
+    //Log unexpected errors
+    logger.error(`Unexpected Error: ${err.message}`);
+    
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
         success:false,
         message:'Something Unexpected happened',
-        error:err,
+        error:{message: err.message},
         data:{}
     })
 }

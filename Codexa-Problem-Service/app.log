@@ -1,0 +1,16 @@
+2026-04-10 10:48:19 [INFO]: Creating new problem: Two Sum Problem: undefined
+2026-04-10 10:48:19 [INFO]: Problem created successfully with ID: 69d8881b387c65e5e98dfd22: undefined
+2026-04-10 10:51:20 [INFO]: Fetching all problems: undefined
+2026-04-10 10:51:20 [INFO]: Retrieved 2 problems: undefined
+2026-04-10 10:52:29 [INFO]: Fetching all problems: undefined
+2026-04-10 10:52:29 [INFO]: Retrieved 2 problems: undefined
+2026-04-10 10:55:43 [INFO]: Fetching all problems
+2026-04-10 10:55:43 [INFO]: Retrieved 2 problems
+2026-04-10 11:46:30 [ERROR]: Unexpected Error: problemService.getproblem is not a function
+2026-04-10 11:48:03 [INFO]: Fetching problem with ID: 69ccd5254d759915baf3c4d7
+2026-04-10 11:48:03 [INFO]: Problem found: 69ccd5254d759915baf3c4d7
+2026-04-10 11:48:55 [INFO]: Fetching all problems
+2026-04-10 11:48:55 [INFO]: Retrieved 2 problems
+2026-04-10 11:48:55 [INFO]: Fetching problem with ID: 69ccd5254d759915baf3c4d7
+2026-04-10 11:48:55 [INFO]: Problem found: 69ccd5254d759915baf3c4d7
+2026-04-10 11:48:55 [INFO]: Fetching problem with ID: invalid-id

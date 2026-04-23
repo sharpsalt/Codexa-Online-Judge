@@ -1,0 +1,5 @@
+most of our queues, jobs,etc is going to ahve similar kind of structure
+
+every job is going to have faiilure mechanism, etc
+Queues can hold different types of jobs which determines how and when they are processed in this section
+

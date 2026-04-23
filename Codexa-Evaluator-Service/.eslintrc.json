@@ -74,6 +74,13 @@
     "keyword-spacing": "error",
     "comma-spacing": "error",
     "arrow-spacing": "error",
-    "space-infix-ops": "error"
+    "space-infix-ops": "error",
+    "no-unused-vars":["error",{
+      "vars":"all",
+      "args":"after-used",
+      "caughtErrors":"all",
+      "ignoreRestSiblings":false,
+      "reportUsedIgnorePatter":false
+    }]
   }
 }

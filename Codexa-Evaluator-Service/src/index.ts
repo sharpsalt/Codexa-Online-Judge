@@ -15,11 +15,17 @@ app.listen(serverConfig.PORT,()=>{
     sampleWorker('SampleQueue');
 
     sampleQueueProducer('SampleJob',{
+        name:"Santa",
+        company:"Meta",
+        position:"Staff SDE",
+        location: "Remote | SFO"
+    },2);
+    sampleQueueProducer('SampleJob',{
         name:"Srijan",
         company:"Google",
         position:"SDE 3",
         location: "Remote | BLR | London"
-    });
+    },1);
 })
 /*
 There is a flag as --kill-others

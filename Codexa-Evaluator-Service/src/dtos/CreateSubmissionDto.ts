@@ -66,4 +66,70 @@ UserDTO dto = new UserDTO(
 );
 
 Simply return DTO instead of fully entity
+
+
+Why DTO's?
+
+1)Security: Like ye Hide karta hai sensitive fields ko so it should not be exposed in API response
+   eg:
+      password,secretKey,internalNotes
+
+2)Reduce Data Transfer: Instead of sending
+
+{
+  "id": 1,
+  "username": "srijan",
+  "password": "...",
+  "createdAt": "...",
+  "updatedAt": "...",
+  "roles": [...]
+}
+  send:
+
+{
+  "id": 1,
+  "username": "srijan"
+}
+  less Network traffic bhi hoga isse...
+
+
+3) Decouple API from Database
+ 
+   Database schema may change:
+
+   Your API Contract remains:
+       userEntity->userDTO
+
+    so frontend won't break 
+
+Common Types
+Request DTO
+
+Data coming from client → server
+
+class CreateUserRequest {
+    String username;
+    String email;
+    String password;
+}
+Response DTO
+
+Data going from server → client
+
+class UserResponse {
+    Long id;
+    String username;
+    String email;
+}
+
+
+If asked:
+Why DTO instead of returning Entity?
+
+Answer:
+Hide sensitive fields
+Reduce payload size
+Separate API layer from persistence layer
+Prevent accidental exposure of database structure
+Easier validation and versioning
  */

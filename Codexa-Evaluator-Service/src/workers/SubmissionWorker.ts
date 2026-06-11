@@ -23,8 +23,9 @@ export default function SubmissionWorker(queueName: string) {//ye bhi kisi bhi q
             if(job.name === "SubmissionJob") {
                 const submissionJobInstance = new SubmissionJob(job.data);//object creation
                 console.log("Calling job handler");
-                await submissionJobInstance.handle(job); //yahi main hai
-                //as worker job uthata an dhandler ko call krta hai wo
+                await submissionJobInstance.handle(job); //agar yaha pe await nahi lagate to worker job ko complete mark kar sakta hai before actual execution finish ho jaye.
+                //main yahi hai
+                //as worker job uthata and handler ko call krta hai wo
 
                 return true;
             }

@@ -30,17 +30,26 @@ export default class SubmissionJob implements IJob { //interface ko implement kr
         console.log(this.payload);
         if(job) {
             const key = Object.keys(this.payload)[0];
-            const codeLanguage = this.payload[key].language;
-            const code = this.payload[key].code;
-            const inputTestCase = this.payload[key].inputCase;
-            const outputTestCase = this.payload[key].outputCase;
+            if(!key) {
+                console.log("No submission key found in payload");
+                return;
+            }
+            const submission = this.payload[key];
+            if(!submission) {
+                console.log("No submission data found for key:", key);
+                return;
+            }
+            const codeLanguage = submission.language;
+            const code = submission.code;
+            const inputTestCase = submission.inputCase;
+            const outputTestCase = submission.outputCase;
             const strategy = createExecutor(codeLanguage); //Factory Patter use kiye hai, qki dusre side ye sidhe switch case mein hum
             //isko wrap kiye hai to based on that wo chal jayega
             console.log(strategy);
             if(strategy != null) {
                 const response : ExecutionResponse = await strategy.execute(code, inputTestCase, outputTestCase);
 
-                evaluationQueueProducer({response, userId: this.payload[key].userId, submissionId: this.payload[key].submissionId});
+                evaluationQueueProducer({response, userId: submission.userId, submissionId: submission.submissionId});
                 if(response.status === "SUCCESS") {
                     console.log("Code executed successfully");
                     console.log(response);

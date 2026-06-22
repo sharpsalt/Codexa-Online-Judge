@@ -41,7 +41,7 @@ class PythonExecutor implements CodeExecutorStrategy {
         });
         
         // Attach events on the stream objects to start and stop reading
-        loggerStream.on('data', (chunk) => {
+        loggerStream.on('data', (chunk: Buffer) => {
             rawLogBuffer.push(chunk);
         });
 

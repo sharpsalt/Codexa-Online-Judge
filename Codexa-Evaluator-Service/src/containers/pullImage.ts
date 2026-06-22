@@ -6,12 +6,12 @@ hone ka wait karo.
  */
 
 //suppose i call "await pullImage("python:3.11")"
-export default async function pullImage(imageName: string) {
+export default async function pullImage(imageName: string): Promise<void> {
     try {
         const docker = new Docker();//pehle docker daemon se connectio banao
-        return new Promise((res, rej) => {//yaha pe Promise isliye use kiye hai qki mera 
+        await new Promise<void>((res, rej) => {//yaha pe Promise isliye use kiye hai qki mera 
             //docker.pull is a callback based API hai
-            docker.pull(imageName, (err: Error, stream: NodeJS.ReadableStream) => {
+            docker.pull(imageName, (err: Error | null, stream: NodeJS.ReadableStream) => {
                 if(err){
                     // throw err;//agar image pull start hi nahi hui
                     return rej(err);//qki callback ke andar throw kabhi kabhi Promise ko properly reject nahi krta hai 
@@ -25,7 +25,7 @@ Extracting
 Complete
                  * ye sb stream ke through aata hai
                  */
-                docker.modem.followProgress(stream, (err, response) => err ? rej(err) : res(response), (event) => {
+                docker.modem.followProgress(stream, (err: Error | null, _response: unknown[]) => err ? rej(err) : res(), (event: { status: string }) => {
                     console.log(event.status);//iske through hum poore image pull operation ko monitor krpate hai
                 });
             });

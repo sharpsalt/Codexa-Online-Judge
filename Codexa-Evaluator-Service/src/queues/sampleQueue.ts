@@ -1,7 +1,7 @@
 import {Queue} from "bullmq";
-import redisConncetion from "../config/redisConfig";
+import redisConnection from "../config/redisConfig";
 
-export default new Queue("SampleQueue",{connection:redisConncetion});
+export default new Queue("SampleQueue",{connection: redisConnection});
 /**
  * it all depend on usecase like 
  * lets say you have a payment module , when the payment is done you want to send email to the user, so will

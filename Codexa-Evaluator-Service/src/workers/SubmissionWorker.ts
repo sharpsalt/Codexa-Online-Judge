@@ -29,9 +29,10 @@ export default function SubmissionWorker(queueName: string) {//ye bhi kisi bhi q
 
                 return true;
             }
+            return false;
         },
         {
-            connection:redisConnection
+            connection: redisConnection
             //Taki worker redis se connect kr sake
         }
     );

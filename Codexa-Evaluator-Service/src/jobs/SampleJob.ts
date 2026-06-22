@@ -1,3 +1,4 @@
+import { Job } from "bullmq";
 import { IJob } from "../types/bullMqJobDefinition";
 // import {Job} from "./type"
 
@@ -28,7 +29,7 @@ export default class SampleJob implements IJob{
         }
     }
 
-    failed=(job:Job):void=>{
+    failed=(job?: Job):void=>{
         //in case job fails then simply we will log it 
         console.log("Job failed ");
         if(job){
@@ -36,4 +37,5 @@ export default class SampleJob implements IJob{
         }
     }
 }
+
 

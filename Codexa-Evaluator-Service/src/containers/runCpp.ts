@@ -34,7 +34,7 @@ async function runCpp(code: string, inputTestCase: string) {
     });
     
     // Attach events on the stream objects to start and stop reading
-    loggerStream.on('data', (chunk) => {
+    loggerStream.on('data', (chunk: Buffer) => {
         rawLogBuffer.push(chunk);
     });//Docker ke stdout/stderr capture kr rahe ho yahan pe and collet chunks mein
 
